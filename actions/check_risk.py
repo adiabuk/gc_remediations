@@ -13,7 +13,7 @@ requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
 class NetDevAlive(Action):
     def run(self, down_device):
         print(f"Checking to see if risk is too high")
-        command = '/opt/nagios_checks/check_nrpe -t30 -H {down_device} -c get_risk'
+        command = f'/opt/nagios_checks/check_nrpe -t30 -H {down_device} -c get_risk'
         results = subprocess.Popen(command.split(), stdout=subprocess.PIPE)
         risk = float(results.stdout.read().decode())
 
