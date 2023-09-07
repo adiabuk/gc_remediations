@@ -5,9 +5,9 @@ description: undrain prod
 runner_type: python-script
 entry_point: undrain_prod.py
 parameters:
-down_device:
-  type: string
-  description: device IP
-  required: True
-  position: 0
+  down_device:
+    type: string
+    description: device IP
+    required: True
+    position: 0
 
