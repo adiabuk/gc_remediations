@@ -1,7 +1,6 @@
 import sys
 import subprocess
 from st2common.runners.base_action import Action
-from nornir import InitNornir
 import requests
 from requests.packages.urllib3.exceptions import InsecureRequestWarning
 
