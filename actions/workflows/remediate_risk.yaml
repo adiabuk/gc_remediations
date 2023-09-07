@@ -6,7 +6,7 @@ input:
 
 tasks:
   check_risk:
-    action :gc_st_risk-factor.check_risk down_device=<% ctx(down_device) %>
+    action :gc_risk_factor.check_risk down_device=<% ctx(down_device) %>
   next:
     - when: <% failed() %>
       do: drain_prod
@@ -19,6 +19,6 @@ tasks:
         - stdout: <% result().stdout %>
         - stderr: <% result().stderr %>
   drain_prod:
-    action :gc_st_risk-factor.drain_prod down_device=<% ctx(down_device) %>
+    action :gc_risk_factor.drain_prod down_device=<% ctx(down_device) %>
   undrain_prod:
-    action :gc_st_risk-factor.undrain_prod down_device=<% ctx(down_device) %>
+    action :gc_risk_factor.undrain_prod down_device=<% ctx(down_device) %>

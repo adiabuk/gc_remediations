@@ -1,6 +1,6 @@
 ---
 name: remediate_risk
-pack: gc_st_risk-factor
+pack: gc_risk_factor
 enabled: True
 description: remediate down devices
 runner_type: orquesta

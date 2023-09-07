@@ -1,2 +1,2 @@
-# gc_st_risk-factor
+# gc_risk_factor
 Risk Factor StackStorm remediation

@@ -1,6 +1,6 @@
 ---
 name: check_risk
-pack: gc_st_risk-factor
+pack: gc_risk_factor
 enabled: True
 description: check to see if a network device is alive
 runner_type: python-script
