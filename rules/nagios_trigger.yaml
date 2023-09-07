@@ -18,13 +18,13 @@ context:
   user: st2admin
 criteria:
   trigger.state:
-    pattern: "^CRITICAL|OK|WARNING$"
+    pattern: "^OK|WARNING$"
     type: regex
   trigger.state_type:
     pattern: HARD
     type: eq
   trigger.service:
-    pattern: "cross_margin_risk"
+    pattern: cross_margin_risk
     type: eq
 action:
   ref: gc_risk_factor.remediate_risk
