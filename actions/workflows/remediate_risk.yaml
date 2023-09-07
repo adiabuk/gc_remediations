@@ -14,7 +14,7 @@ tasks:
         - stdout: <% result().stdout %>
         - stderr: <% result().stderr %>
     - when: <% succeeded() %>
-      do: undrain_prod()
+      do: undrain_prod
       publish:
         - stdout: <% result().stdout %>
         - stderr: <% result().stderr %>
