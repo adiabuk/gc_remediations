@@ -31,4 +31,3 @@ action:
   description: try to auto remediate risk value
   parameters:
     down_device: "{{ trigger.host }}"
-    down_service: "{{ trigger.service }}"
