@@ -18,10 +18,10 @@ tasks:
         publish:
           - stdout: <% result().stdout %>
           - stderr: <% result().stderr %>
-    drain_prod:
-      action: gc_risk_factor.drain_prod down_device=<% ctx(down_device) %>
-    undrain_prod:
-      action: gc_risk_factor.undrain_prod down_device=<% ctx(down_device) %>
+  drain_prod:
+    action: gc_risk_factor.drain_prod down_device=<% ctx(down_device) %>
+  undrain_prod:
+    action: gc_risk_factor.undrain_prod down_device=<% ctx(down_device) %>
 
 output:
   - stdout: <% ctx(stdout) %>
