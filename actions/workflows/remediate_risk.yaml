@@ -22,3 +22,8 @@ tasks:
     action: gc_risk_factor.drain_prod down_device=<% ctx(down_device) %>
   undrain_prod:
     action: gc_risk_factor.undrain_prod down_device=<% ctx(down_device) %>
+
+output:
+  - stdout: <% ctx(stdout) %>
+  - stderr: <% ctx(stderr) %>
+
