@@ -27,8 +27,8 @@ criteria:
     pattern: "cross_margin_risk"
     type: eq
 action:
-  ref: gc_risk_factor.network_recovery
-  description: try to auto remediate network down device
+  ref: gc_risk_factor.remediate_risk
+  description: try to auto remediate risk value
   parameters:
     down_device: "{{ trigger.host }}"
     down_service: "{{ trigger.service }}"
