@@ -11,8 +11,3 @@ parameters:
     description: name of host that is down
     required: True
     position: 0
-  down_service:
-    type: string
-    description: name of service
-    required: True
-    position: 1
