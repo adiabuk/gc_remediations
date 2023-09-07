@@ -1,0 +1,18 @@
+---
+name: red_alert
+pack: gc_st_risk-factor
+enabled: True
+description: check to see if a network device is alive
+runner_type: python-script
+entry_point: red_alert.py
+parameters:
+  down_device:
+    type: string
+    description: hostname of network device to check
+    required: True
+    position: 0
+  down_service:
+    type: string
+    description: hostname of network device to check
+    required: True
+    position: 1

@@ -1,0 +1,20 @@
+---
+name: remediate_risk
+pack: gc_st_risk-factor
+enabled: True
+description: remediate down devices
+runner_type: orquesta
+entry_point: workflows/remediate_risk.yaml
+parameters:
+  down_device:
+    type: string
+    description: name of host that is down
+    required: True
+    position: 0
+  down_service:
+    type: string
+    description: name of service
+    required: True
+    position: 1
+
+

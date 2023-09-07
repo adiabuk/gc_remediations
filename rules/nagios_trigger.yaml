@@ -1,0 +1,34 @@
+--
+pack: gc_st_risk-factor
+ref: gc_st_risk-factor.nagios_trigger
+name: nagios_trigger
+uid: rule:gc_st_risk-factor:nagios_trigger
+tags: []
+type:
+  ref: standard
+  parameters: {}
+enabled: true
+trigger:
+  type: nagios.service_state_change
+  ref: nagios.service_state_change
+  description: Trigger type for nagios service state change event.
+  parameters: {}
+metadata_file: ''
+context:
+  user: st2admin
+criteria:
+  trigger.state:
+    pattern: "^CRITICAL|OK|WARNING$"
+    type: regex
+  trigger.state_type:
+    pattern: HARD
+    type: eq
+  trigger.service:
+    pattern: "cross_margin_risk"
+    type: eq
+action:
+  ref: gc_st_risk-factor.network_recovery
+  description: try to auto remediate network down device
+  parameters:
+    down_device: "{{ trigger.host }}"
+    down_service: "{{ trigger.service }}"

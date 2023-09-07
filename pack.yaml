@@ -1,0 +1,11 @@
+---
+ref: gc_st_risk-factor
+name : gc_st_risk-factor
+description : Risk Factor Nagios Remediation
+keywords:
+  - python3
+version: 0.0.1
+python_versions:
+  - "3"
+author : amro
+email : adiab@linuxmail.org
