@@ -4,7 +4,7 @@ name : gc_risk_factor
 description : Risk Factor Nagios Remediation
 keywords:
   - python3
-version: 0.1.1
+version: 0.1.2
 python_versions:
   - "3"
 author : amro
