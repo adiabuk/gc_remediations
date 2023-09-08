@@ -16,7 +16,11 @@ class NetDevAlive(Action):
         command = f'/opt/nagios_checks/check_nrpe -t30 -H {down_device} -c get_risk'
         results = subprocess.Popen(command.split(), stdout=subprocess.PIPE)
         risk = float(results.stdout.read().decode())
-        print(f"Risk is {risk}, returning {int(risk < 2)}")
+        result = bool(risk > 2)
+        print(f"Risk is {risk}, result={result}")
 
-        return bool(risk > 2)
+        if not result:
+            sys.exit(1)
+
+        return result
 
