@@ -15,6 +15,6 @@ class DrainProd(Action):
         print(f"draining prod env")
         command = f'/opt/nagios_checks/check_nrpe -t30 -H {down_device} -c drain_prod'
         subprocess.Popen(command.split(), stdout=subprocess.PIPE)
-
+        print("Prod drained")
         return 0
 
