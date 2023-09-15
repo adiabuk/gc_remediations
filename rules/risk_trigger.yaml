@@ -1,8 +1,8 @@
 ---
 pack: gc_risk_factor
-ref: gc_risk_factor.nagios_trigger
-name: nagios_trigger
-uid: rule:gc_risk_factor:nagios_trigger
+ref: gc_risk_factor.risk_trigger
+name: risk_trigger
+uid: rule:gc_risk_factor:risk_trigger
 tags: []
 type:
   ref: standard
