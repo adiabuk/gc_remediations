@@ -12,9 +12,14 @@ tasks:
         do: enable_swap
         publish:
           - stdout: <% result().stdout %>
+      - when: <% succeeded() %>
+        do: finish_success
+        publish:
           - stderr: <% result().stderr %>
   enable_swap:
     action: gc_risk_factor.drain_prod down_device=<% ctx(down_device) %>
+  finish_success:
+    action: core.echo message="swap OK on <% ctx(down_device) %>"
 
 output:
   - stdout: <% ctx(stdout) %>
