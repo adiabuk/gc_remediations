@@ -1,0 +1,13 @@
+---
+name: check_swap
+pack: gc_risk_factor
+enabled: True
+description: Check if swap space is available
+runner_type: python-script
+entry_point: check_swap.py
+parameters:
+  down_device:
+    type: string
+    description: hostname of network device to check
+    required: True
+    position: 0

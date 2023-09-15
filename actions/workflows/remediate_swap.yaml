@@ -1,0 +1,22 @@
+version: 1.0
+description: remediate swap space
+
+input:
+  - down_device
+
+tasks:
+  check_swap:
+    action: gc_risk_factor.check_swap down_device=<% ctx(down_device) %>
+    next:
+      - when: <% failed() %>
+        do: enable_swap
+        publish:
+          - stdout: <% result().stdout %>
+          - stderr: <% result().stderr %>
+  enable_swap:
+    action: gc_risk_factor.drain_prod down_device=<% ctx(down_device) %>
+
+output:
+  - stdout: <% ctx(stdout) %>
+  - stderr: <% ctx(stderr) %>
+
