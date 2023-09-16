@@ -1,7 +1,7 @@
 ---
 ref: gc_remediations
 name : gc_remediations
-description : Risk Factor Nagios Remediation
+description : Remediations for greencandle
 keywords:
   - python3
 version: 0.2.0

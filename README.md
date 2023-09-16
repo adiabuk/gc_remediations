@@ -1,2 +1,2 @@
 # gc_remediations
-Risk Factor StackStorm remediation
+Greencandle StackStorm remediation
