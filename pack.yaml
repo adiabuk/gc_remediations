@@ -1,6 +1,6 @@
 ---
-ref: gc_risk_factor
-name : gc_risk_factor
+ref: gc_remediations
+name : gc_remediations
 description : Risk Factor Nagios Remediation
 keywords:
   - python3

@@ -1,6 +1,6 @@
 ---
 name: red_alert
-pack: gc_risk_factor
+pack: gc_remediations
 enabled: True
 description: check to see if a network device is alive
 runner_type: python-script

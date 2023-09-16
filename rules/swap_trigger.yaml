@@ -1,8 +1,8 @@
 ---
-pack: gc_risk_factor
-ref: gc_risk_factor.swap_trigger
+pack: gc_remediations
+ref: gc_remediations.swap_trigger
 name: swap_trigger
-uid: rule:gc_risk_factor:swap_trigger
+uid: rule:gc_remediations:swap_trigger
 tags: []
 type:
   ref: standard
@@ -27,7 +27,7 @@ criteria:
     pattern: Swap
     type: eq
 action:
-  ref: gc_risk_factor.remediate_swap
+  ref: gc_remediations.remediate_swap
   description: try to auto remediate swap space
   parameters:
     down_device: "{{ trigger.host }}"

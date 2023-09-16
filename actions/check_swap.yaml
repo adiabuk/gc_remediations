@@ -1,6 +1,6 @@
 ---
 name: check_swap
-pack: gc_risk_factor
+pack: gc_remediations
 enabled: True
 description: Check if swap space is available
 runner_type: python-script

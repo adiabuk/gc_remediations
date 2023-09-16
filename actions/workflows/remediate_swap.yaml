@@ -6,7 +6,7 @@ input:
 
 tasks:
   check_swap:
-    action: gc_risk_factor.check_swap down_device=<% ctx(down_device) %>
+    action: gc_remediations.check_swap down_device=<% ctx(down_device) %>
     next:
       - when: <% failed() %>
         do: enable_swap
@@ -17,7 +17,7 @@ tasks:
         publish:
           - stderr: <% result().stderr %>
   enable_swap:
-    action: gc_risk_factor.drain_prod down_device=<% ctx(down_device) %>
+    action: gc_remediations.drain_prod down_device=<% ctx(down_device) %>
   finish_success:
     action: core.echo message="swap OK on <% ctx(down_device) %>"
 
