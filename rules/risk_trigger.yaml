@@ -1,8 +1,8 @@
 ---
 pack: gc_remediations
-ref: gc_remediations.risk_trigger
-name: risk_trigger
-uid: rule:gc_remediations:risk_trigger
+ref: gc_remediations.nagios_trigger
+name: nagios_trigger
+uid: rule:gc_remediations:nagios_trigger
 tags: []
 type:
   ref: standard
