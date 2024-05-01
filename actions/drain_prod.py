@@ -14,7 +14,7 @@ requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
 class DrainProd(Action):
     def run(self, down_device):
         print(f"draining prod env")
-        command = f'/opt/nagios_checks/check_nrpe -t30 -H {down_device} -c drain_prod'
+        command = f'/opt/nagios_checks/check_nrpe -2 -t30 -H {down_device} -c drain_prod'
         return 0
         p = subprocess.Popen(command.split(), stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
         try:
