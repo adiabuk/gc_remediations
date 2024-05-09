@@ -1,0 +1,33 @@
+---
+pack: gc_remediations
+ref: gc_remediations.epoch_trigger
+name: epoch_trigger
+uid: rule:gc_remediations:epoch_trigger
+tags: []
+type:
+  ref: standard
+  parameters: {}
+enabled: true
+trigger:
+  type: nagios.service_state_change
+  ref: nagios.service_state_change
+  description: Trigger type for nagios service state change event.
+  parameters: {}
+metadata_file: ''
+context:
+  user: st2admin
+criteria:
+  trigger.state:
+    pattern: "^WARNING|CRITICAL$"
+    type: regex
+  trigger.state_type:
+    pattern: HARD
+    type: eq
+  trigger.service:
+    pattern: Stream API.*
+    type: regex
+action:
+  ref: gc_remediations.remediate_epoch
+  description: try to auto remediate missing/old data in stream api
+  parameters:
+    down_device: "{{ trigger.host }}"
