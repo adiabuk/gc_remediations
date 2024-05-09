@@ -1,0 +1,23 @@
+version: 1.0
+description: remediate stream containers
+
+input:
+  - down_device
+  - down_service
+
+tasks:
+  check_epoch:
+    action: gc_remediations.check_epoch down_device=<% ctx(down_device) %> down_service=<% ctx(down_service) %>
+    next:
+      - when: <% failed() %>
+        do: restart_stream
+        publish:
+          - stdout: <% result().stdout %>
+          - stderr: <% result().stderr %>
+  restart_stream:
+    action: gc_remediations.restart_stream down_device=<% ctx(down_device) %> down_service=<% ctx(down_service) %>
+
+output:
+  - stdout: <% ctx(stdout) %>
+  - stderr: <% ctx(stderr) %>
+

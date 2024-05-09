@@ -1,0 +1,18 @@
+---
+name: remediate_epoch
+pack: gc_remediations
+enabled: True
+description: remediate epoch
+runner_type: orquesta
+entry_point: workflows/remediate_epoch.yaml
+parameters:
+  down_device:
+    type: string
+    description: name of host
+    required: True
+    position: 0
+  down_service:
+    description: name of the service
+    required: True
+    position: 1
+

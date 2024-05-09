@@ -1,0 +1,18 @@
+---
+name: check_risk
+pack: gc_remediations
+enabled: True
+description: check freshness of stream data
+runner_type: python-script
+entry_point: check_epoch.py
+parameters:
+  down_device:
+    type: string
+    description: hostname of network device to check
+    required: True
+    position: 0
+  down_service:
+    type: string
+    description: name of the service
+    required: True
+    position: 1

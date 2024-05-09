@@ -31,3 +31,4 @@ action:
   description: try to auto remediate missing/old data in stream api
   parameters:
     down_device: "{{ trigger.host }}"
+    down_service: "{{ trigger.service }}"
