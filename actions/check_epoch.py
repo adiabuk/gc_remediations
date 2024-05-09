@@ -26,7 +26,7 @@ class EpochFresh(Action):
         results = subprocess.Popen(command.split(), stdout=subprocess.PIPE)
         output = results.stdout.read().decode()
         result = bool(output.split()[0] == 'OK')
-        print(f"Output is {output}")
+        print(f"Output is {output} result is {result}")
         if not result:
             sys.exit(1)
 

@@ -9,7 +9,6 @@ __all__ = ["NetDevAlive"]
 
 requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
 
-
 class NetDevAlive(Action):
     def run(self, down_device):
         print(f"Checking to see if risk is too high")
@@ -23,4 +22,3 @@ class NetDevAlive(Action):
             sys.exit(1)
 
         return result
-
