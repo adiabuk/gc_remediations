@@ -14,7 +14,7 @@ tasks:
         publish:
           - stdout: <% result().stdout %>
           - stderr: <% result().stderr %>
-      - when <% succeeded() %>
+      - when: <% succeeded() %>
         publish:
           - stdout: "no issues"
           - stderr: "no errors"
