@@ -14,6 +14,11 @@ tasks:
         publish:
           - stdout: <% result().stdout %>
           - stderr: <% result().stderr %>
+      - when <% succeeded() %>
+        publish:
+          - stdout: "no issues"
+          - stderr: "no errors"
+
   restart_stream:
     action: gc_remediations.restart_stream down_device=<% ctx(down_device) %> down_service=<% ctx(down_service) %>
 

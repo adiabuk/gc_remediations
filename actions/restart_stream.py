@@ -10,7 +10,6 @@ __all__ = ["RestartStream"]
 
 requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
 
-
 class RestartStream(Action):
     def run(self, down_device, down_service):
         print(f"Restarting stream")

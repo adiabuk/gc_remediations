@@ -10,7 +10,6 @@ __all__ = ["DrainProd"]
 
 requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
 
-
 class DrainProd(Action):
     def run(self, down_device):
         print(f"draining prod env")
