@@ -14,7 +14,6 @@ class DrainProd(Action):
     def run(self, down_device):
         print(f"draining prod env")
         command = f'/opt/nagios_checks/check_nrpe -2 -t30 -H {down_device} -c drain_prod'
-        return 0
         p = subprocess.Popen(command.split(), stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
         try:
             # Filter stdout

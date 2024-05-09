@@ -15,7 +15,7 @@ class RestartStream(Action):
         print(f"Restarting stream")
         interval = down_service.split()[-1]
         command = f'/opt/nagios_checks/check_nrpe -2 -t30 -H local.amrox.loc -c restart_stream -a {interval}'
-        return 0
+        print(f"Running command {command}")
         p = subprocess.Popen(command.split(), stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
         try:
             # Filter stdout
