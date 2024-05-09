@@ -18,9 +18,9 @@ class EpochFresh(Action):
                         "15m": [5003,910,940],
                         "30m": [5004,1830,1900],
                         "1h":  [5005,3600,3660],
-                        "4h":  [5006,14400,1460]}
-                        #"12h": [5007,
-                        #"1d":  [5007}
+                        "4h":  [5006,14400,1460],
+                        "12h": [5007,43200,43260],
+                        "1d":  [5008,86400,86460]}
         port, warning, critical = port_mapping[interval]
         command = f'/opt/nagios_checks/check_milliepoch -u http://{down_device}:{port} -w {warning} -c {critical}'
         results = subprocess.Popen(command.split(), stdout=subprocess.PIPE)
