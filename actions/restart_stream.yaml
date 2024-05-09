@@ -1,7 +1,7 @@
 ---
 name: restart_stream
 enabled: True
-description: drain prod
+description: restart stream container to remediate
 runner_type: python-script
 entry_point: restart_stream.py
 parameters:

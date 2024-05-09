@@ -2,12 +2,12 @@
 name: check_risk
 pack: gc_remediations
 enabled: True
-description: check to see if a network device is alive
+description: check if risk level is too high
 runner_type: python-script
 entry_point: check_risk.py
 parameters:
   down_device:
     type: string
-    description: hostname of network device to check
+    description: hostname
     required: True
     position: 0

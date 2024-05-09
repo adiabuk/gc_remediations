@@ -2,12 +2,12 @@
 name: remediate_risk
 pack: gc_remediations
 enabled: True
-description: remediate down devices
+description: remediate trade risk
 runner_type: orquesta
 entry_point: workflows/remediate_risk.yaml
 parameters:
   down_device:
     type: string
-    description: name of host that is down
+    description: name of host
     required: True
     position: 0
