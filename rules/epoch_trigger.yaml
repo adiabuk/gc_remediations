@@ -24,7 +24,7 @@ criteria:
     pattern: HARD
     type: eq
   trigger.service:
-    pattern: Stream API.*
+    pattern: "Stream API.*"
     type: regex
 action:
   ref: gc_remediations.remediate_epoch
