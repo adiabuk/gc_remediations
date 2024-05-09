@@ -13,6 +13,7 @@ requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
 class RestartStream(Action):
     def run(self, down_device, down_service):
         print(f"Restarting stream")
+        interval = down_service.split()[-1]
         command = f'/opt/nagios_checks/check_nrpe -2 -t30 -H local.amrox.loc -c restart_stream -a {interval}'
         return 0
         p = subprocess.Popen(command.split(), stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
@@ -32,4 +33,3 @@ class RestartStream(Action):
             time.sleep(0.5)
         return_code = p.returncode
         return return_code
-
