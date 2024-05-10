@@ -18,7 +18,7 @@ context:
   user: st2admin
 criteria:
   trigger.state:
-    pattern: "^UNKNOWN|WARNING|CRITICAL$"
+    pattern: "^OK|WARNING|CRITICAL$"
     type: regex
   trigger.state_type:
     pattern: HARD
