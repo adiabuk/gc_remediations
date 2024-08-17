@@ -8,8 +8,8 @@ tasks:
   check_risk:
     action: gc_remediations.check_risk down_device=<% ctx(down_device) %>
     retry:
-        delay: 3
-        count: 3
+        delay: 1
+        count: 2
     next:
       - when: <% failed() %>
         do: drain_prod
