@@ -7,6 +7,9 @@ input:
 tasks:
   check_risk:
     action: gc_remediations.check_risk down_device=<% ctx(down_device) %>
+        retry:
+      when: <% result().status_code == 9 %>
+      count: 3
     next:
       - when: <% failed() %>
         do: drain_prod

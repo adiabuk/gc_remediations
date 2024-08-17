@@ -14,7 +14,12 @@ class NetDevAlive(Action):
         print(f"Checking to see if risk is too high")
         command = f'/opt/nagios_checks/check_nrpe -2 -t3 -H {down_device} -c get_risk'
         results = subprocess.Popen(command.split(), stdout=subprocess.PIPE)
-        risk = float(results.stdout.read().decode())
+        try:
+            risk = float(results.stdout.read().decode())
+        except ValueError:
+            print(f"Unable to decode output: {results.stdout.read().decode()} "
+                  f"{results.stderr.read().decode()}")
+            sys.exit(9)
         result = bool(risk > 1.5)
         print(f"Risk is {risk}, result={result}")
 
