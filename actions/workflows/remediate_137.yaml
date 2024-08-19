@@ -1,0 +1,32 @@
+version: 1.0
+description: remediate docker containers exited with 137 exit code
+
+input:
+  - down_device
+
+tasks:
+  check_risk:
+    action: gc_remediations.check_137 down_device=<% ctx(down_device) %>
+    retry:
+        delay: 1
+        count: 2
+    next:
+      - when: <% failed() %>
+        do: restart_137
+        publish:
+          - stdout: <% result().stdout %>
+          - stderr: <% result().stderr %>
+      - when: <% succeeded() %>
+        do: clear_alert
+        publish:
+          - stdout: <% result().stdout %>
+          - stderr: <% result().stderr %>
+  restart_137:
+    action: gc_remediations.restart_137 down_device=<% ctx(down_device) %>
+  clear_alert:
+    action: gc_remediations.clear_alert down_device=<% ctx(down_device) down_service=% ctx(down_service) %>
+
+output:
+  - stdout: <% ctx(stdout) %>
+  - stderr: <% ctx(stderr) %>
+

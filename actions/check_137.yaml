@@ -1,0 +1,13 @@
+---
+name: check_137
+pack: gc_remediations
+enabled: True
+description: check if containers exited with 137 code
+runner_type: python-script
+entry_point: check_137.py
+parameters:
+  down_device:
+    type: string
+    description: hostname
+    required: True
+    position: 0

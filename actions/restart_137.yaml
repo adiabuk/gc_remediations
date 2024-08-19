@@ -1,0 +1,12 @@
+---
+name: restart_137
+enabled: True
+description: restart containers exited with 137
+runner_type: python-script
+entry_point: restart_137.py
+parameters:
+  down_device:
+    type: string
+    description: device IP
+    required: True
+    position: 0

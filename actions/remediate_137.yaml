@@ -1,0 +1,13 @@
+---
+name: remediate_137
+pack: gc_remediations
+enabled: True
+description: remediate containers exited with 137 code
+runner_type: orquesta
+entry_point: workflows/remediate_137.yaml
+parameters:
+  down_device:
+    type: string
+    description: name of host
+    required: True
+    position: 0

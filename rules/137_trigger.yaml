@@ -1,0 +1,34 @@
+---
+pack: gc_remediations
+ref: gc_remediations.137_trigger
+name: 137_trigger
+uid: rule:gc_remediations:137_trigger
+tags: []
+type:
+  ref: standard
+  parameters: {}
+enabled: true
+trigger:
+  type: nagios.service_state_change
+  ref: nagios.service_state_change
+  description: Trigger type for nagios service state change event.
+  parameters: {}
+metadata_file: ''
+context:
+  user: st2admin
+criteria:
+  trigger.state:
+    pattern: "^WARNING|CRITICAL$"
+    type: regex
+  trigger.state_type:
+    pattern: HARD
+    type: eq
+  trigger.service:
+    pattern: docker_137
+    type: eq
+action:
+  ref: gc_remediations.remediate_137
+  description: try to auto remediate containers exited with 137
+  parameters:
+    down_device: "{{ trigger.host }}"
+    down_service: "{{ trigger.service }}"
