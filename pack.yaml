@@ -4,7 +4,7 @@ name : gc_remediations
 description : Remediations for greencandle
 keywords:
   - python3
-version: 0.3.19
+version: 0.4.0
 python_versions:
   - "3"
 author : amro
