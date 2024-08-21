@@ -24,7 +24,7 @@ tasks:
   restart_137:
     action: gc_remediations.restart_137 down_device=<% ctx(down_device) %>
   clear_alert:
-    action: gc_remediations.clear_alert down_device=<% ctx(down_device) down_service=% ctx(down_service) %>
+    action: gc_remediations.clear_alert down_device=<% ctx(down_device) %> down_service=% ctx(down_service) %>
 
 output:
   - stdout: <% ctx(stdout) %>
