@@ -11,7 +11,7 @@ __all__ = ["ClearAlert"]
 requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
 
 class ClearAlert(Action):
-    def run(self, down_device):
+    def run(self, down_device, down_service):
         print(f"Restarted 137 stopped containers")
         command = f'/opt/nagios_checks/check_nrpe -2 -t30 -H {down_device} -c clear_alert -a "{down_device}" "{down_service}"'
         p = subprocess.Popen(command.split(), stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
