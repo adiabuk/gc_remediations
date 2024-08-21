@@ -11,7 +11,7 @@ requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
 
 class NetDevAlive(Action):
     def run(self, down_device):
-        print(f"Checking to see if risk is too high")
+        print(f"Checking to see if any containers exited with 137")
         command = f'/opt/nagios_checks/check_nrpe -2 -t30 -H {down_device} -c check_container_status'
         results = subprocess.Popen(command.split(), stdout=subprocess.PIPE)
         stdout = results.stdout.read().decode()
