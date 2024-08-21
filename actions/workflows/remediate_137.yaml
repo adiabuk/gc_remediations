@@ -6,7 +6,7 @@ input:
   - down_service
 
 tasks:
-  check_risk:
+  check_137:
     action: gc_remediations.check_137 down_device=<% ctx(down_device) %>
     retry:
         delay: 1
