@@ -3,6 +3,7 @@ description: remediate docker containers exited with 137 exit code
 
 input:
   - down_device
+  - down_service
 
 tasks:
   check_risk:
