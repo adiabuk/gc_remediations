@@ -11,3 +11,8 @@ parameters:
     description: name of host
     required: True
     position: 0
+  down_service:
+    type: string
+    description: name of service
+    required: True
+    position: 1
