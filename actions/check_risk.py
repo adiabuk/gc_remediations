@@ -5,11 +5,11 @@ import requests
 from requests.packages.urllib3.exceptions import InsecureRequestWarning
 
 
-__all__ = ["NetDevAlive"]
+__all__ = ["CheckRisk"]
 
 requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
 
-class NetDevAlive(Action):
+class CheckRisk(Action):
     def run(self, down_device):
         print(f"Checking to see if risk is too high")
         command = f'/opt/nagios_checks/check_nrpe -2 -t3 -H {down_device} -c get_risk'

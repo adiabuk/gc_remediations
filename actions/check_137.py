@@ -5,11 +5,11 @@ import requests
 from requests.packages.urllib3.exceptions import InsecureRequestWarning
 
 
-__all__ = ["NetDevAlive"]
+__all__ = ["Check137"]
 
 requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
 
-class NetDevAlive(Action):
+class Check137(Action):
     def run(self, down_device):
         print(f"Checking to see if any containers exited with 137")
         command = f'/opt/nagios_checks/check_nrpe -2 -t30 -H {down_device} -c check_container_status'
