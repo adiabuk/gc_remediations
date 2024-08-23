@@ -25,6 +25,7 @@ class EpochFresh(Action):
         command = f'/opt/nagios_checks/check_milliepoch -u http://{down_device}:{port} -w {warning} -c {critical}'
         results = subprocess.Popen(command.split(), stdout=subprocess.PIPE)
         output = results.stdout.read().decode()
+        results.wait()
         result = bool(output.split()[0] == 'OK')
         print(f"Output is {output} result is {result}")
         if not result:

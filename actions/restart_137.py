@@ -24,6 +24,7 @@ class Restart137(Action):
                 sys.stdout.flush()
         except:
             sys.stdout.flush()
+        p.wait()
 
         # Wait until process terminates (without using p.wait())
         while p.poll() is None:

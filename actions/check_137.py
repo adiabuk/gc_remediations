@@ -15,6 +15,7 @@ class NetDevAlive(Action):
         command = f'/opt/nagios_checks/check_nrpe -2 -t30 -H {down_device} -c check_container_status'
         results = subprocess.Popen(command.split(), stdout=subprocess.PIPE)
         stdout = results.stdout.read().decode()
+        results.wait()
         try:
             containers = float(stdout.split()[-1])
         except ValueError:
