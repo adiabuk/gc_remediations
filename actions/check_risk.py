@@ -12,7 +12,7 @@ requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
 class CheckRisk(Action):
     def run(self, down_device):
         print(f"Checking to see if risk is too high")
-        command = f'/opt/nagios_checks/check_nrpe -2 -t3 -H {down_device} -c get_risk'
+        command = f'/opt/nagios_checks/check_nrpe -2 -t10 -H {down_device} -c get_risk'
         results = subprocess.Popen(command.split(), stdout=subprocess.PIPE)
         stdout = results.stdout.read().decode()
         results.wait()
