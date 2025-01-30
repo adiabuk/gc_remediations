@@ -1,0 +1,13 @@
+---
+name: remediate_risk
+pack: gc_remediations
+enabled: True
+description: remediate direction change
+runner_type: orquesta
+entry_point: workflows/remediate_direction.yaml
+parameters:
+  down_device:
+    type: string
+    description: name of host
+    required: True
+    position: 0

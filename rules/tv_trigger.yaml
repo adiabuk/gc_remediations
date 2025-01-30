@@ -1,0 +1,33 @@
+---
+pack: gc_remediations
+ref: gc_remediations.tv_trigger.py
+name: tv_trigger.py
+uid: rule:gc_remediations:tv_trigger.py
+tags: []
+type:
+  ref: standard
+  parameters: {}
+enabled: true
+trigger:
+  type: nagios.service_state_change
+  ref: nagios.service_state_change
+  description: Trigger type for nagios service state change event.
+  parameters: {}
+metadata_file: ''
+context:
+  user: st2admin
+criteria:
+  trigger.state:
+    pattern: "^OK|WARNING|CRITICAL$"
+    type: regex
+  trigger.state_type:
+    pattern: HARD
+    type: eq
+  trigger.service:
+    pattern: data_tv_stats_all
+    type: eq
+action:
+  ref: gc_remediations.remediate_direction
+  description: try to auto remediate direction change
+  parameters:
+    down_device: "{{ trigger.host }}"

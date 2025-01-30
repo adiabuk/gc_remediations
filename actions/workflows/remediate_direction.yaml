@@ -1,0 +1,46 @@
+version: 1.0
+description: remediate direction change
+
+input:
+  - down_device
+
+tasks:
+  check_long:
+    action: gc_remediations.check_direction direction=long
+    retry:
+        delay: 1
+        count: 2
+    on-success:
+      - drain_short
+      - undrain-long
+  check_short:
+    action: gc_remediations.check_direction direction=short
+    retry:
+        delay: 1
+        count: 2
+    on-success:
+      - drain-long
+      - undrain-short
+  check_neutral:
+    action: gc_remediations.check_direction direction=neutral
+    retry:
+        delay: 1
+        count: 2
+    on-uccess:
+      - drain-long
+      - drain-short
+
+  drain_long:
+    action: gc_remediations.drain_direction direction=long down_device=<% ctx(down_device) %> action=True
+  drain_short:
+    action: gc_remediations.drain_direction direction=short down_device=<% ctx(down_device) %> action=True
+  undrain_long:
+    action: gc_remediations.drain_direction direction=long down_device=<% ctx(down_device) %> action=False
+  undrain_short:
+    action: gc_remediations.drain_direction direction=short down_device=<% ctx(down_device) %> action=False
+
+
+output:
+  - stdout: <% ctx(stdout) %>
+  - stderr: <% ctx(stderr) %>
+

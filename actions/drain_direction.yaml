@@ -1,0 +1,18 @@
+---
+name: drain_direction
+enabled: True
+description: drain direction
+runner_type: python-script
+entry_point: drain_direction.py
+parameters:
+  direction:
+    type: string
+    description: direction to drain
+    required: True
+    position: 0
+  down_device:
+    type: string
+    description: device to remediate
+    required: True
+    position: 0
+
