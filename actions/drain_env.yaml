@@ -1,5 +1,6 @@
 ---
 name: drain_env
+pack: gc_remediations
 enabled: True
 description: drain env
 runner_type: python-script
@@ -12,6 +13,6 @@ parameters:
     position: 0
   env:
     type: string
-    description: env name
+    description: environment name
     required: True
     position: 1
