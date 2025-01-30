@@ -10,7 +10,7 @@ __all__ = ["DrainEnv"]
 
 requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
 
-class DrainProd(Action):
+class DrainEnv(Action):
     def run(self, down_device, env):
         print(f"draining env {env}")
         command = f'/opt/nagios_checks/check_nrpe -2 -t30 -H {down_device} -c drain_env -a {env}'
