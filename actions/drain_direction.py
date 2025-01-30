@@ -13,7 +13,7 @@ requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
 class DrainDirection(Action):
     def run(self, direction, down_device, action):
         print(f"setting drain for {direction} to {action}")
-        command = f'/opt/nagios_checks/check_nrpe -2 -t30 -H {down_device} -c drain_direction -a {str(action} {direction}'
+        command = f'/opt/nagios_checks/check_nrpe -2 -t30 -H {down_device} -c drain_direction -a {str(action)} {direction}'
         p = subprocess.Popen(command.split(), stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
         try:
             # Filter stdout
