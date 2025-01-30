@@ -3,6 +3,7 @@ description: remediate risk factor
 
 input:
   - down_device
+  - env
 
 tasks:
   check_risk:
