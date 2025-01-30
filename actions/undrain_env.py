@@ -6,14 +6,14 @@ import requests
 from requests.packages.urllib3.exceptions import InsecureRequestWarning
 
 
-__all__ = ["DrainProd"]
+__all__ = ["UndrainEnv"]
 
 requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
 
-class DrainProd(Action):
-    def run(self, down_device):
-        print(f"draining prod env")
-        command = f'/opt/nagios_checks/check_nrpe -2 -t30 -H {down_device} -c drain_prod'
+class UndrainEnv(Action):
+    def run(self, down_device, env):
+        print(f"undraining env {env}")
+        command = f'/opt/nagios_checks/check_nrpe -2 -t30 -H {down_device} -c undrain_env -a {env}'
         p = subprocess.Popen(command.split(), stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
         try:
             # Filter stdout

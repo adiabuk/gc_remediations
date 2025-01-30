@@ -1,13 +1,17 @@
 ---
-name: undrain_prod
+name: drain_env
 enabled: True
-description: undrain prod
+description: drain env
 runner_type: python-script
-entry_point: undrain_prod.py
+entry_point: drain_env.py
 parameters:
   down_device:
     type: string
     description: device IP
     required: True
     position: 0
-
+  env:
+    type: string
+    description: env name
+    required: True
+    position: 1

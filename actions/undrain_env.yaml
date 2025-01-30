@@ -1,0 +1,17 @@
+---
+name: undrain_env
+enabled: True
+description: undrain env
+runner_type: python-script
+entry_point: undrain_env.py
+parameters:
+  down_device:
+    type: string
+    description: device IP
+    required: True
+    position: 0
+  env:
+    type: string
+    description: env name
+    required: True
+    position: 1

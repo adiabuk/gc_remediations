@@ -1,8 +1,8 @@
 ---
 pack: gc_remediations
-ref: gc_remediations.risk_trigger
+ref: gc_remediations.risk_trigger_prod
 name: risk_trigger
-uid: rule:gc_remediations:risk_trigger
+uid: rule:gc_remediations:risk_trigger_prod
 tags: []
 type:
   ref: standard
@@ -11,7 +11,7 @@ enabled: true
 trigger:
   type: nagios.service_state_change
   ref: nagios.service_state_change
-  description: Trigger type for nagios service state change event.
+  description: Trigger type for nagios service state change event - prod env
   parameters: {}
 metadata_file: ''
 context:
@@ -24,10 +24,11 @@ criteria:
     pattern: HARD
     type: eq
   trigger.service:
-    pattern: cross_margin_risk
+    pattern: prod-cross_margin_risk
     type: eq
 action:
   ref: gc_remediations.remediate_risk
   description: try to auto remediate risk value
   parameters:
     down_device: "{{ trigger.host }}"
+    env: "prod"

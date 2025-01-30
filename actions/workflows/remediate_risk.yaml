@@ -6,25 +6,25 @@ input:
 
 tasks:
   check_risk:
-    action: gc_remediations.check_risk down_device=<% ctx(down_device) %>
+    action: gc_remediations.check_risk down_device=<% ctx(down_device) %> env=<% ctx(env) %>
     retry:
         delay: 1
         count: 2
     next:
       - when: <% failed() %>
-        do: drain_prod
+        do: drain_env
         publish:
           - stdout: <% result().stdout %>
           - stderr: <% result().stderr %>
       - when: <% succeeded() %>
-        do: undrain_prod
+        do: undrain_env
         publish:
           - stdout: <% result().stdout %>
           - stderr: <% result().stderr %>
-  drain_prod:
-    action: gc_remediations.drain_prod down_device=<% ctx(down_device) %>
-  undrain_prod:
-    action: gc_remediations.undrain_prod down_device=<% ctx(down_device) %>
+  drain_env:
+    action: gc_remediations.drain_env down_device=<% ctx(down_device) %> env=<% ctx(env) %>
+  undrain_env:
+    action: gc_remediations.undrain_env down_device=<% ctx(down_device) %> env=<% ctx(env) %)
 
 output:
   - stdout: <% ctx(stdout) %>

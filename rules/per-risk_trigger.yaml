@@ -1,0 +1,34 @@
+---
+pack: gc_remediations
+ref: gc_remediations.risk_trigger_per
+name: risk_trigger
+uid: rule:gc_remediations:risk_trigger_per
+tags: []
+type:
+  ref: standard
+  parameters: {}
+enabled: true
+trigger:
+  type: nagios.service_state_change
+  ref: nagios.service_state_change
+  description: Trigger type for nagios service state change event - per env
+  parameters: {}
+metadata_file: ''
+context:
+  user: st2admin
+criteria:
+  trigger.state:
+    pattern: "^OK|WARNING|CRITICAL$"
+    type: regex
+  trigger.state_type:
+    pattern: HARD
+    type: eq
+  trigger.service:
+    pattern: per-cross_margin_risk
+    type: eq
+action:
+  ref: gc_remediations.remediate_risk
+  description: try to auto remediate risk value
+  parameters:
+    down_device: "{{ trigger.host }}"
+    env: "per"
