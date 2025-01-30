@@ -10,7 +10,7 @@ parameters:
     description: device IP
     required: True
     position: 0
-  env:
+  environment:
     type: string
     description: env name
     required: True

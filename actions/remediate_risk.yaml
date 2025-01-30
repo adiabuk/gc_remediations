@@ -11,7 +11,7 @@ parameters:
     description: name of host
     required: True
     position: 0
-  env:
+  environment:
     type: string
     description: environment
     required: True

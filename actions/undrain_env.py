@@ -11,9 +11,9 @@ __all__ = ["UndrainEnv"]
 requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
 
 class UndrainEnv(Action):
-    def run(self, down_device, env):
-        print(f"undraining env {env}")
-        command = f'/opt/nagios_checks/check_nrpe -2 -t30 -H {down_device} -c undrain_env -a {env}'
+    def run(self, down_device, environment):
+        print(f"undraining env {environment}")
+        command = f'/opt/nagios_checks/check_nrpe -2 -t30 -H {down_device} -c undrain_env -a {environment}'
         p = subprocess.Popen(command.split(), stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
         try:
             # Filter stdout
@@ -22,7 +22,7 @@ class UndrainEnv(Action):
                 # Print status
                 print(">>> " + line.rstrip())
                 sys.stdout.flush()
-        except:
+        except Exception:
             sys.stdout.flush()
 
         # Wait until process terminates (without using p.wait())
@@ -31,4 +31,3 @@ class UndrainEnv(Action):
             time.sleep(0.5)
         return_code = p.returncode
         return return_code
-
