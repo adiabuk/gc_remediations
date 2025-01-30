@@ -25,7 +25,7 @@ tasks:
   drain_env:
     action: gc_remediations.drain_env down_device=<% ctx(down_device) %> env=<% ctx(env) %>
   undrain_env:
-    action: gc_remediations.undrain_env down_device=<% ctx(down_device) %> env=<% ctx(env) %)
+    action: gc_remediations.undrain_env down_device=<% ctx(down_device) %> env=<% ctx(env) %>
 
 output:
   - stdout: <% ctx(stdout) %>
