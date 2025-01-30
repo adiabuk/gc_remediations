@@ -14,5 +14,11 @@ parameters:
     type: string
     description: device to remediate
     required: True
-    position: 0
+    position: 1
+  action:
+    type: boolean
+    description: set or unset
+    required: True
+    position: 2
+
 
