@@ -30,4 +30,3 @@ tasks:
 output:
   - stdout: <% ctx(stdout) %>
   - stderr: <% ctx(stderr) %>
-

@@ -12,7 +12,6 @@ parameters:
     required: True
     position: 0
   env:
-    type: string
     description: environment name
     required: True
     position: 1
