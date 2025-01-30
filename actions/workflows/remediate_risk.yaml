@@ -3,11 +3,11 @@ description: remediate risk factor
 
 input:
   - down_device
-  - env
+  - environment
 
 tasks:
   check_risk:
-    action: gc_remediations.check_risk down_device=<% ctx(down_device) %> env=<% ctx(env) %>
+    action: gc_remediations.check_risk down_device=<% ctx(down_device) %> environment=<% ctx(environment) %>
     retry:
         delay: 1
         count: 2
@@ -23,9 +23,9 @@ tasks:
           - stdout: <% result().stdout %>
           - stderr: <% result().stderr %>
   drain_env:
-    action: gc_remediations.drain_env down_device=<% ctx(down_device) %> env=<% ctx(env) %>
+    action: gc_remediations.drain_env down_device=<% ctx(down_device) %> environment=<% ctx(environment) %>
   undrain_env:
-    action: gc_remediations.undrain_env down_device=<% ctx(down_device) %> env=<% ctx(env) %>
+    action: gc_remediations.undrain_env down_device=<% ctx(down_device) %> environment=<% ctx(environment) %>
 
 output:
   - stdout: <% ctx(stdout) %>

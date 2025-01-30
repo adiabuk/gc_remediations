@@ -11,9 +11,9 @@ __all__ = ["DrainEnv"]
 requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
 
 class DrainEnv(Action):
-    def run(self, down_device, env):
-        print(f"draining env {env}")
-        command = f'/opt/nagios_checks/check_nrpe -2 -t30 -H {down_device} -c drain_env -a {env}'
+    def run(self, down_device, environment):
+        print(f"draining env {environment}")
+        command = f'/opt/nagios_checks/check_nrpe -2 -t30 -H {down_device} -c drain_env -a {environment}'
         p = subprocess.Popen(command.split(), stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
         try:
             # Filter stdout
@@ -31,4 +31,3 @@ class DrainEnv(Action):
             time.sleep(0.5)
         return_code = p.returncode
         return return_code
-
