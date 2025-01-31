@@ -22,7 +22,6 @@ tasks:
       - drain_long
       - undrain_short
   check_neutral:
-    action: check_neutral
     action: gc_remediations.check_direction direction=neutral
     retry:
         delay: 1
