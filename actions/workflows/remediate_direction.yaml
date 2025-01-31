@@ -30,6 +30,8 @@ tasks:
       - drain-long
       - drain-short
 
+  check_direction:
+    action: gc_remediations.check_direction direction=<% ctx(direction) %>
   drain_long:
     action: gc_remediations.drain_direction direction=long down_device=<% ctx(down_device) %> action=True
   drain_short:
