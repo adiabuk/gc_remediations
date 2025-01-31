@@ -6,32 +6,41 @@ input:
 
 tasks:
   check_long:
-    action: gc_remediations.check_direction direction=long
+    #action: gc_remediations.check_direction direction=long
+    action: check_long
     retry:
         delay: 1
         count: 2
     on-success:
       - drain_short
-      - undrain-long
+      - undrain_long
   check_short:
-    action: gc_remediations.check_direction direction=short
+    #action: gc_remediations.check_direction direction=short
+    action: check_short
     retry:
         delay: 1
         count: 2
     on-success:
-      - drain-long
-      - undrain-short
+      - drain_long
+      - undrain_short
   check_neutral:
-    action: gc_remediations.check_direction direction=neutral
+    #action: gc_remediations.check_direction direction=neutral
+    action: check_neutral
     retry:
         delay: 1
         count: 2
     on-success:
-      - drain-long
-      - drain-short
+      - drain_long
+      - drain_short
 
   check_direction:
     action: gc_remediations.check_direction direction=<% ctx(direction) %>
+  check_long:
+    action: gc_remediations.check_direction direction=long
+  check_short:
+    action: gc_remediations.check_direction direction=short
+  check_neutral:
+    action: gc_remediations.check_direction direction=neutral
   drain_long:
     action: gc_remediations.drain_direction direction=long down_device=<% ctx(down_device) %> action=True
   drain_short:
