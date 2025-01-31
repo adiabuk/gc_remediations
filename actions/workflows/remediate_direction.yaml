@@ -8,7 +8,7 @@ tasks:
   check_long:
     action: gc_remediations.check_direction direction="long"
     next:
-      - when: <% succeeded() and result().result=True %>
+      - when: <% succeeded() and result().result=true %>
         do:
           - drain_short
           - undrain_long
@@ -19,7 +19,7 @@ tasks:
   check_short:
     action: gc_remediations.check_direction direction="short"
     next:
-      - when: <% succeeded() and result().result=True %>
+      - when: <% succeeded() and result().result=true %>
         do:
           - drain_long
           - undrain_short
@@ -30,7 +30,7 @@ tasks:
   check_neutral:
     action: gc_remediations.check_direction direction="neutral"
     next:
-      - when: <% succeeded() and result().result=True %>
+      - when: <% succeeded() and result().result=true %>
         do:
           - drain_long
           - drain_short
