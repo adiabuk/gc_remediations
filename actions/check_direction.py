@@ -32,4 +32,5 @@ class CheckDirection(Action):
             result = float(value) == 0
 
         print(f"result is {str(result)}")
-        sys.exit(self.check_result(result))
+        return result
+        #sys.exit(self.check_result(result))
