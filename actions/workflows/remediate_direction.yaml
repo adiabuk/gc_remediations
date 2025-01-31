@@ -40,13 +40,13 @@ tasks:
           - finish
 
   drain_long:
-    action: gc_remediations.drain_direction direction=long down_device=<% ctx(down_device) %> action=True
+    action: gc_remediations.drain_direction direction="long" down_device=<% ctx(down_device) %> action=True
   drain_short:
-    action: gc_remediations.drain_direction direction=short down_device=<% ctx(down_device) %> action=True
+    action: gc_remediations.drain_direction direction="short" down_device=<% ctx(down_device) %> action=True
   undrain_long:
-    action: gc_remediations.drain_direction direction=long down_device=<% ctx(down_device) %> action=False
+    action: gc_remediations.drain_direction direction="long" down_device=<% ctx(down_device) %> action=False
   undrain_short:
-    action: gc_remediations.drain_direction direction=short down_device=<% ctx(down_device) %> action=False
+    action: gc_remediations.drain_direction direction="short" down_device=<% ctx(down_device) %> action=False
   finish:
     action: core.echo message="Automation completed."
 
