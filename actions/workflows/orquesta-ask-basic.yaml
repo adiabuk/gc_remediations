@@ -1,6 +1,8 @@
 version: 1.0
 
 description: A basic workflow that demonstrates inquiry.
+input:
+  - version
 
 tasks:
   start:
@@ -17,7 +19,7 @@ tasks:
         properties:
           approved:
             type: boolean
-            description: "Continue?"
+            description: "Installing v <% ctx(version) %> Continue?"
             required: True
     next:
       - when: <% succeeded() %>
