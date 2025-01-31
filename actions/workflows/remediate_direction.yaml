@@ -9,7 +9,7 @@ tasks:
     action: gc_remediations.check_direction direction="long"
     retry:
         delay: 1
-        count: 2
+        count: 1
     next:
       - when: <% succeeded() %>
         do:
@@ -23,7 +23,7 @@ tasks:
     action: gc_remediations.check_direction direction="short"
     retry:
         delay: 1
-        count: 2
+        count: 1
     next:
       - when: <% succeeded() %>
         do:
@@ -37,7 +37,7 @@ tasks:
     action: gc_remediations.check_direction direction="neutral"
     retry:
         delay: 1
-        count: 2
+        count: 1
     next:
       - when: <% succeeded() %>
         do:
