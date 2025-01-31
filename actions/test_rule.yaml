@@ -1,0 +1,13 @@
+---
+name: test_rule
+pack: gc_remediations
+enabled: True
+description: test rule
+runner_type: python-script
+entry_point: test_rule.py
+parameters:
+  down_device:
+    type: boolean
+    description: result
+    required: True
+    position: 0
