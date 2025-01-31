@@ -49,7 +49,3 @@ tasks:
     action: gc_remediations.drain_direction direction="short" down_device=<% ctx(down_device) %> action=False
   finish:
     action: core.echo message="Automation completed."
-
-output:
-  - stdout: <% ctx(stdout) %>
-  - stderr: <% ctx(stderr) %>
