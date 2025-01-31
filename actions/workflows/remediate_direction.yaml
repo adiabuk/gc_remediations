@@ -16,6 +16,9 @@ tasks:
           - drain_short
           - undrain_long
           - finish
+        publish:
+          - stdout: <% result().stdout %>
+          - stderr: <% result().stderr %>
   check_short:
     action: gc_remediations.check_direction direction="short"
     retry:
@@ -27,6 +30,9 @@ tasks:
           - drain_long
           - undrain_short
           - finish
+        publish:
+          - stdout: <% result().stdout %>
+          - stderr: <% result().stderr %>
   check_neutral:
     action: gc_remediations.check_direction direction="neutral"
     retry:
@@ -38,6 +44,9 @@ tasks:
           - drain_long
           - drain_short
           - finish
+        publish:
+          - stdout: <% result().stdout %>
+          - stderr: <% result().stderr %>
 
   drain_long:
     action: gc_remediations.drain_direction direction="long" down_device=<% ctx(down_device) %> action=True
