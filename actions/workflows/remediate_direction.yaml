@@ -6,29 +6,38 @@ input:
 
 tasks:
   check_long:
-    action: gc_remediations.check_direction direction=long
+    action: gc_remediations.check_direction direction="long"
     retry:
         delay: 1
         count: 2
-    on-success:
-      - drain_short
-      - undrain_long
+    next:
+      - when: <% succeeded() %>
+        do:
+          - drain_short
+          - undrain_long
+          - finish
   check_short:
-    action: gc_remediations.check_direction direction=short
+    action: gc_remediations.check_direction direction="short"
     retry:
         delay: 1
         count: 2
-    on-success:
-      - drain_long
-      - undrain_short
+    next:
+      - when: <% succeeded() %>
+        do:
+          - drain_long
+          - undrain_short
+          - finish
   check_neutral:
-    action: gc_remediations.check_direction direction=neutral
+    action: gc_remediations.check_direction direction="neutral"
     retry:
         delay: 1
         count: 2
-    on-success:
-      - drain_long
-      - drain_short
+    next:
+      - when: <% succeeded() %>
+        do:
+          - drain_long
+          - drain_short
+          - finish
 
   drain_long:
     action: gc_remediations.drain_direction direction=long down_device=<% ctx(down_device) %> action=True
@@ -38,6 +47,8 @@ tasks:
     action: gc_remediations.drain_direction direction=long down_device=<% ctx(down_device) %> action=False
   undrain_short:
     action: gc_remediations.drain_direction direction=short down_device=<% ctx(down_device) %> action=False
+  finish:
+    action: core.echo message="Automation completed."
 
 output:
   - stdout: <% ctx(stdout) %>
