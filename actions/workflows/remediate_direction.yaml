@@ -39,8 +39,6 @@ tasks:
   undrain_short:
     action: gc_remediations.drain_direction direction=short down_device=<% ctx(down_device) %> action=False
 
-
 output:
   - stdout: <% ctx(stdout) %>
   - stderr: <% ctx(stderr) %>
-
