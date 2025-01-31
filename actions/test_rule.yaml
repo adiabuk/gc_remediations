@@ -6,7 +6,7 @@ description: test rule
 runner_type: python-script
 entry_point: test_rule.py
 parameters:
-  down_device:
+  result:
     type: boolean
     description: result
     required: True
