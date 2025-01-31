@@ -7,9 +7,6 @@ input:
 tasks:
   check_long:
     action: gc_remediations.check_direction direction="long"
-    retry:
-        delay: 1
-        count: 1
     next:
       - when: <% succeeded() %>
         do:
@@ -21,9 +18,6 @@ tasks:
           - stderr: <% result().stderr %>
   check_short:
     action: gc_remediations.check_direction direction="short"
-    retry:
-        delay: 1
-        count: 1
     next:
       - when: <% succeeded() %>
         do:
@@ -35,9 +29,6 @@ tasks:
           - stderr: <% result().stderr %>
   check_neutral:
     action: gc_remediations.check_direction direction="neutral"
-    retry:
-        delay: 1
-        count: 1
     next:
       - when: <% succeeded() %>
         do:
