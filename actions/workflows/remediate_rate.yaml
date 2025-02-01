@@ -7,7 +7,7 @@ input:
 
 tasks:
   check_rate:
-    action: gc_remediations.check_rate service=<% ctx(service) %>
+    action: gc_remediations.get_rate_details service=<% ctx(service) %>
     retry:
         delay: 1
         count: 2
