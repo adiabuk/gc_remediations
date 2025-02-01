@@ -14,7 +14,7 @@ tasks:
     next:
       - when: <% succeeded() %>
         publish:
-          - envronment: <% result().result.env %>
+          - environment: <% result().result.env %>
           - direction: <% result().result.direction %>
         do:
           - check_rate
