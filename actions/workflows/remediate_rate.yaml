@@ -21,6 +21,6 @@ tasks:
 
   check_rate:
     input:
-      environment: <% ctx(environment) %>
-      direction: <% ctx(direction) %>
+      environment: <% ctx().environment %>
+      direction: <% ctx().direction %>
     action: gc_remediations.check_rate
