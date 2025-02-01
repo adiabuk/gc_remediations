@@ -6,7 +6,7 @@ input:
   - service
 
 tasks:
-  check_rate:
+  get_details:
     action: gc_remediations.get_rate_details service=<% ctx(service) %>
     retry:
         delay: 1
@@ -15,6 +15,11 @@ tasks:
       - when: <% succeeded() %>
         publish:
           - env: <% result().result.env %>
-          - status_message: "Environment: <% ctx().env %>"
           - direction: <% result().result.direction %>
-          - status_message: "Direction: <% ctx().direction %>"
+        do:
+          - check_rate
+
+  check_rate:
+    action: gc_remediations.check_rate env= <% ctx(env) %> direction=<%ctx(direction) %>
+
+
