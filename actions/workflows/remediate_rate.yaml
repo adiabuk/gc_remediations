@@ -20,6 +20,7 @@ tasks:
           - check_rate
 
   check_rate:
-    action: gc_remediations.check_rate envronment=<% ctx(environment) %> direction=<%ctx(direction) %>
-
-
+    input:
+      environment: <% ctx(environment) %>
+      direction: <% ctx(direction) %>
+    action: gc_remediations.check_rate
