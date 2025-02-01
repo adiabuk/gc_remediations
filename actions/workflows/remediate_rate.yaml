@@ -14,12 +14,12 @@ tasks:
     next:
       - when: <% succeeded() %>
         publish:
-          - env: <% result().result.env %>
+          - envronment: <% result().result.env %>
           - direction: <% result().result.direction %>
         do:
           - check_rate
 
   check_rate:
-    action: gc_remediations.check_rate env= <% ctx(env) %> direction=<%ctx(direction) %>
+    action: gc_remediations.check_rate envronment=<% ctx(environment) %> direction=<%ctx(direction) %>
 
 

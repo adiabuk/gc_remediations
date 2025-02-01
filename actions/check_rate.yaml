@@ -6,7 +6,7 @@ description: verify current rate
 runner_type: python-script
 entry_point: check_rate.py
 parameters:
-  env:
+  environment:
     type: string
     description: env
     required: True

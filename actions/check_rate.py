@@ -18,7 +18,7 @@ class CheckRate(Action):
         """
         return 0 if result else 9
 
-    def run(self, env, direction):
+    def run(self, environment, direction):
         print("Check current rate")
         url = "http://jenkins:9090/api/v1/query"
         query = f'rate({__name__=~"open_net_perc_{direction}_trades_{env}"}[10m])'
