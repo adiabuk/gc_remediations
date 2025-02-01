@@ -1,4 +1,3 @@
-import sys
 from st2common.runners.base_action import Action
 import requests
 from requests.packages.urllib3.exceptions import InsecureRequestWarning
@@ -18,7 +17,7 @@ class CheckRate(Action):
         return 0 if result else 9
 
     def run(self, environment, direction):
-        print("Check current rate")
+        print(f"Check current rate for {direction} in {environment} env")
         url = "http://jenkins:9090/api/v1/query"
         query = f'rate({{__name__=~"open_net_perc_{direction}_trades_{environment}"}}[10m])'
         value = requests.post(f'{url}?query={query}',
