@@ -1,0 +1,35 @@
+---
+pack: gc_remediations
+ref: gc_remediations.rate_change
+name: rate_change
+uid: rule:gc_remediations:rate_change
+tags: []
+type:
+  ref: standard
+  parameters: {}
+enabled: true
+trigger:
+  type: nagios.service_state_change
+  ref: nagios.service_state_change
+  description: Trigger type for nagios service state change event.
+  parameters: {}
+metadata_file: ''
+context:
+  user: st2admin
+criteria:
+  trigger.state:
+    pattern: "^OK|WARNING|CRITICAL$"
+    type: regex
+  trigger.state_type:
+    pattern: HARD
+    type: eq
+  trigger.service:
+    pattern: ".*_.*_rate"
+    type: regex
+action:
+  ref: gc_remediations.remediate_rate
+  description: try to auto remediate rate change
+  parameters:
+    down_device: "{{ trigger.host }}"
+    service: "{{ trigger.service }}"
+

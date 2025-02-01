@@ -1,0 +1,20 @@
+version: 1.0
+description: remediate trades having a high rate of change
+
+input:
+  - down_device
+  - service
+
+tasks:
+  check_rate:
+    action: gc_remediations.check_rate service=<% ctx(service) %>
+    retry:
+        delay: 1
+        count: 2
+    next:
+      - when: <% succeeded() %>
+        publish:
+          - env: <% result().result.env %>
+          - status_message: "Environment: <% ctx().env %>"
+          - direction: <% result().result.direction %>
+          - status_message: "Direction: <% ctx().direction %>"

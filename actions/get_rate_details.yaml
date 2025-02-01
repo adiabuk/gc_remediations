@@ -1,0 +1,13 @@
+---
+name: get_rate_details
+pack: gc_remediations
+enabled: True
+description: get details from service name
+runner_type: python-script
+entry_point: get_rate_details.py
+parameters:
+  service:
+    type: string
+    description: service name from nagios
+    required: True
+    position: 0
