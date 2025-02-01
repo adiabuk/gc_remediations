@@ -17,7 +17,7 @@ class GetRateDetails(Action):
         my_dict = dictObject()
         my_dict.direction = direction
         my_dict.env = env
-        results = dict(my_dict)
-        for k, v in my_dict.items():
+        results = my_dict.__dict__
+        for k, v in results.items():
             print(f"Found {k}, {v}")
-        return mydict.__dict__
+        return results
