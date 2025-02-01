@@ -6,7 +6,7 @@ input:
   - service
 
 tasks:
-  get_details:
+  start:
     action: gc_remediations.get_rate_details service=<% ctx(service) %>
     retry:
         delay: 1
@@ -18,9 +18,12 @@ tasks:
           - direction: <% result().result.direction %>
         do:
           - check_rate
+          - finish
 
   check_rate:
     input:
       environment: <% ctx().environment %>
       direction: <% ctx().direction %>
     action: gc_remediations.check_rate
+  finish:
+    action: core.echo message="all done!"
