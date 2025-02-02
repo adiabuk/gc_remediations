@@ -31,4 +31,6 @@ class CloseTrades(Action):
         while p.poll() is None:
             # Process hasn't exited yet, let's wait some
             time.sleep(0.5)
+        out = p.stdout.read() if p.stdout else 'none'
+        err = p.stderr.read() if p.stderr else 'none'
         return {'return_code': p.returncode, 'stdout': p.stdout,  'stderr': p.stderr}
