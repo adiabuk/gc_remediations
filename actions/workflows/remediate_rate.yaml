@@ -29,14 +29,12 @@ tasks:
       - when: <% succeeded() %>
         publish:
           - result_value: <% result().result %>
-
-  process_result:
-    when: <% int(ctx().result_value) > 0  %>
-      do:
-        - proceed
-    when: <% int(ctx().result_value) <  0  %>
-      do:
-        - nothing
+      - when: <% int(ctx().result_value) > 0  %>
+        do:
+          - proceed
+      - when: <% int(ctx().result_value) <  0  %>
+        do:
+          - nothing
 
   finish:
     action: core.echo message="all done!"
