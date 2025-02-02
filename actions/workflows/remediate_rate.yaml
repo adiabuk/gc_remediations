@@ -36,5 +36,3 @@ tasks:
     action: core.echo message="Need to remediate"
   nothing:
     action: core.echo message="nothing to see here"
-  finish:
-    action: core.echo message="all done!"
