@@ -18,7 +18,6 @@ tasks:
           - direction: <% result().result.direction %>
         do:
           - check_rate
-          - finish
 
   check_rate:
     input:
@@ -33,9 +32,9 @@ tasks:
         do:
           - nothing
 
-  finish:
-    action: core.echo message="all done!"
   proceed:
     action: core.echo message="Need to remediate"
   nothing:
     action: core.echo message="nothing to see here"
+  finish:
+    action: core.echo message="all done!"
