@@ -31,4 +31,6 @@ class CloseTrades(Action):
             # Process hasn't exited yet, let's wait some
             time.sleep(0.5)
         return_code = p.returncode
+        sys.stderr.write(p.stderr.read() + '\n')
+        sys.stdout.write(p.stdout.read() + '\n')
         return return_code
