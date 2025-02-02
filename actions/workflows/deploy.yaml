@@ -11,7 +11,6 @@ tasks:
       - when: <% succeeded() %>
         do:
           - deploy_dev
-          - get_approval
 
   get_approval:
     action: core.ask
@@ -25,12 +24,20 @@ tasks:
             required: True
     next:
       - when: <% succeeded() %>
-        do: deploy_test
+        do:
+          - deploy_test
+          - deploy_stag
+          - deploy_prod
       - when: <% failed() %>
         do: stop
 
   deploy_dev:
     action: core.echo message="deploying dev"
+    next:
+      - when: <% succeeded() %>
+        do:
+          - get_approval
+
   deploy_test:
     action: core.echo message="deploying test"
   deploy_stag:
