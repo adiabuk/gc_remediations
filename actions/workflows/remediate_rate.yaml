@@ -32,9 +32,9 @@ tasks:
       - when: <% int(result().result) > 0 %>
         do:
           - proceed
-      #- when: <% int(ctx().result_value) < 0 %>
-      #  do:
-      #    - nothing
+      - when: <% int(result().result) < 0 %>
+        do:
+          - nothing
 
   finish:
     action: core.echo message="all done!"
