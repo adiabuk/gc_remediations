@@ -9,13 +9,6 @@ requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
 
 class CheckRate(Action):
 
-    @staticmethod
-    def check_result(result):
-        """
-        get exit code from bool result
-        """
-        return 0 if result else 9
-
     def run(self, environment, direction):
         print(f"Check current rate for {direction} in {environment} env")
         url = "http://jenkins:9090/api/v1/query"
@@ -23,4 +16,4 @@ class CheckRate(Action):
         value = requests.post(f'{url}?query={query}',
                               timeout=10).json()['data']['result'][0]['value'][-1]
         print(value)
-        return value
+        return float(value)
