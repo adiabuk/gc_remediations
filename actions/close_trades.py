@@ -12,9 +12,10 @@ requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
 
 class CloseTrades(Action):
     def run(self, down_device, environment, direction):
-        print(f"draining env {environment}")
+        threshold = 1
+        print(f"closing {direction} trades in {environment} over {threshold}%")
         command = (f'/opt/nagios_checks/check_nrpe -2 -t30 -H {down_device} -c close_trades '
-                   f'-a {environment} {direction} 999')
+                   f'-a {environment} {direction} {threshold}')
         p = subprocess.Popen(command.split(), stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
         try:
             # Filter stdout
