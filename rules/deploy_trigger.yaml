@@ -10,7 +10,7 @@ type:
 enabled: true
 
 trigger:
-        type: "gc_deploy"
+        type: "gc_remediations.deploy_trigger"
         parameters:
             url: "gc_deploy"
 
