@@ -30,4 +30,4 @@ class CloseTrades(Action):
         while p.poll() is None:
             # Process hasn't exited yet, let's wait some
             time.sleep(0.5)
-        return {'return_code': p.return_code, 'stdout': p.stdout,  'stderr': p.stderr}
+        return {'return_code': p.returncode, 'stdout': p.stdout,  'stderr': p.stderr}
