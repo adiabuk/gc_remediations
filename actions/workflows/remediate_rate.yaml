@@ -29,7 +29,7 @@ tasks:
       - when: <% succeeded() %>
         publish:
           - result_value: <% result().result %>
-      - when: <% int(ctx().result_value) > 0 %>
+      - when: <% int(result().result) > 0 %>
         do:
           - proceed
       #- when: <% int(ctx().result_value) < 0 %>
