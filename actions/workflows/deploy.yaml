@@ -32,7 +32,7 @@ tasks:
         do: stop
 
   deploy_dev:
-    action: core.echo message="deploying dev"
+    action: core.local cmd="/opt/nagios_checks/check_nrpe -2 -t30 -H jenkins -c deploy_env -a dev <% ctx().version %>"
     next:
       - when: <% succeeded() %>
         do:
