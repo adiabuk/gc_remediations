@@ -9,7 +9,9 @@ tasks:
     action: core.echo message="deployment started."
     next:
       - when: <% succeeded() %>
-        do: get_approval
+        do:
+          - deploy_dev
+          - get_approval
 
   get_approval:
     action: core.ask
@@ -19,13 +21,22 @@ tasks:
         properties:
           approved:
             type: boolean
-            description: "Installing v<% ctx(version) %> Continue?"
+            description: "Installing <% ctx(version) %> Continue?"
             required: True
     next:
       - when: <% succeeded() %>
-        do: finish
+        do: deploy_test
       - when: <% failed() %>
         do: stop
+
+  deploy_dev:
+    action: core.echo message="deploying dev"
+  deploy_test:
+    action: core.echo message="deploying test"
+  deploy_stag:
+    action: core.echo message="deploying stag"
+  deploy_prod:
+    action: core.echo message="deploying prod"
 
   finish:
     action: core.echo message="Automation completed."
