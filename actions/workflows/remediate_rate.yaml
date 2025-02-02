@@ -23,7 +23,7 @@ tasks:
   check_rate:
     input:
       environment: <% ctx().environment %>
-       direction: <% ctx().direction %>
+      direction: <% ctx().direction %>
     action: gc_remediations.check_rate
     next:
       - when: <% succeeded() and result().result >= 1  %>
