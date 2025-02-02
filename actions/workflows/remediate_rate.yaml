@@ -27,10 +27,16 @@ tasks:
     next:
       - when: <% int(result().result) > 1 %>
         do:
-          - gc_remediations.close_trades
+          - close_trades
       - when: <% int(result().result) < 1 %>
         do:
           - nothing
 
   nothing:
     action: core.echo message="nothing to see here"
+  close_trades:
+    input:
+      down_device: <% ctx().environment %>
+      environment: <% ctx().environment %>
+      direction: <% ctx().direction %>
+    action: gc_remediations.close_trades
