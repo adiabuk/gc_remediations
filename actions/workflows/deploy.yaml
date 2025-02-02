@@ -39,11 +39,11 @@ tasks:
           - get_approval
 
   deploy_test:
-    action: core.echo message="deploying test"
+    action: core.local cmd="/opt/nagios_checks/check_nrpe -2 -t30 -H jenkins -c deploy_env -a test <% ctx().version %>"
   deploy_stag:
-    action: core.echo message="deploying stag"
-  deploy_prod:
-    action: core.echo message="deploying prod"
+    action: core.local cmd="/opt/nagios_checks/check_nrpe -2 -t30 -H jenkins -c deploy_env -a stag <% ctx().version %>"
+  deploy_config:
+    action: core.local cmd="/opt/nagios_checks/check_nrpe -2 -t30 -H jenkins -c deploy_env -a config <% ctx().version %>"
 
   finish:
     action: core.echo message="Automation completed."
