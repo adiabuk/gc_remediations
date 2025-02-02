@@ -26,13 +26,10 @@ tasks:
       direction: <% ctx().direction %>
     action: gc_remediations.check_rate
     next:
-      - when: <% succeeded() %>
-        publish:
-          - result_value: <% result().result %>
-      - when: <% int(result().result) > 0 %>
+      - when: <% int(result().result) > 1 %>
         do:
           - proceed
-      - when: <% int(result().result) < 0 %>
+      - when: <% int(result().result) < 1 %>
         do:
           - nothing
 
