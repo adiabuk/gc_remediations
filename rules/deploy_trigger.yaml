@@ -15,7 +15,7 @@ trigger:
             url: "gc_deploy"
 
 action:
-  ref: "gc_remediations.deploy_gc"
+  ref: "gc_remediations.deploy"
   description: run deployment workflow
   parameters:
     version: "{{ trigger.version }}"
