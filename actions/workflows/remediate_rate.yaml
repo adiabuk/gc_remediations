@@ -27,7 +27,7 @@ tasks:
     next:
       - when: <% int(result().result) > 1 %>
         do:
-          - gc_remediations.close_trades down_device=<% ctx().down_device %> environment=<% ctx().environment %> direction=<% ctx().direction %>
+          - gc_remediations.close_trades
       - when: <% int(result().result) < 1 %>
         do:
           - nothing
