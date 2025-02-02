@@ -18,4 +18,4 @@ action:
   ref: "gc_remediations.deploy"
   description: run deployment workflow
   parameters:
-    version: "{{ trigger.body }}"
+    version: "{{ trigger.body.payload }}"
