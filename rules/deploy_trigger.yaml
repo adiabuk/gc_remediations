@@ -1,0 +1,21 @@
+---
+pack: gc_remediations
+ref: gc_remediations.deploy_trigger
+name: deploy_trigger
+uid: rule:gc_remediations:deploy_trigger
+tags: []
+type:
+  ref: standard
+  parameters: {}
+enabled: true
+
+trigger:
+        type: "core.st2.webhook"
+        parameters:
+            url: "gc_deploy"
+
+action:
+  ref: "gc_remediations.deploy_gc"
+  description: run deployment workflow
+  parameters:
+    version: "{{ trigger.version }}"

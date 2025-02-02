@@ -1,0 +1,36 @@
+version: 1.0
+
+description: deploy greencandle
+input:
+  - version
+
+tasks:
+  start:
+    action: core.echo message="deployment started."
+    next:
+      - when: <% succeeded() %>
+        do: get_approval
+
+  get_approval:
+    action: core.ask
+    input:
+      schema:
+        type: object
+        properties:
+          approved:
+            type: boolean
+            description: "Installing v<% ctx(version) %> Continue?"
+            required: True
+    next:
+      - when: <% succeeded() %>
+        do: finish
+      - when: <% failed() %>
+        do: stop
+
+  finish:
+    action: core.echo message="Automation completed."
+
+  stop:
+    action: core.echo message="Automation stopped."
+    next:
+      - do: fail

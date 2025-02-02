@@ -1,0 +1,13 @@
+---
+name: deploy
+description: deploy
+runner_type: orquesta
+entry_point: workflows/deploy.yaml
+enabled: true
+parameters:
+  version:
+    type: string
+    description: version number to install
+    required: True
+    position: 0
+
