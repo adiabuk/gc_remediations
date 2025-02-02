@@ -33,4 +33,4 @@ class CloseTrades(Action):
             time.sleep(0.5)
         out = p.stdout.read() if p.stdout else 'none'
         err = p.stderr.read() if p.stderr else 'none'
-        return {'return_code': p.returncode, 'stdout': p.stdout,  'stderr': p.stderr}
+        return {'return_code': p.returncode, 'stdout': out,  'stderr': err}
