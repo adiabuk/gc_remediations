@@ -1,0 +1,23 @@
+---
+name: close_trades
+pack: gc_remediations
+enabled: True
+description: close trades in given direction
+runner_type: python-script
+entry_point: close_trades.py
+parameters:
+  down_device:
+    type: string
+    description: device IP
+    required: True
+    position: 0
+  environment:
+    type: string
+    description: env name
+    required: True
+    position: 1
+  direction:
+    type: string
+    description: direction of trades
+    required: True
+    position: 2

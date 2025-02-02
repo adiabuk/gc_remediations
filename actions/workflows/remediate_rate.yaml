@@ -27,12 +27,10 @@ tasks:
     next:
       - when: <% int(result().result) > 1 %>
         do:
-          - proceed
+          - gc_remediations.close_trades down_device=<% ctx(down_device) %> environment=<% ctx(environment) %> direction=<% ctx(direction) %>
       - when: <% int(result().result) < 1 %>
         do:
           - nothing
 
-  proceed:
-    action: core.echo message="Need to remediate"
   nothing:
     action: core.echo message="nothing to see here"
