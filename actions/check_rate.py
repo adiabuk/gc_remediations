@@ -11,7 +11,7 @@ class CheckRate(Action):
 
     def run(self, environment, direction):
         print(f"Check current rate for {direction} in {environment} env")
-        url = "http://jenkins:9090/api/v1/query"
+        url = "http://watchtower:9090/api/v1/query"
         query = f'rate({{__name__=~"open_net_perc_{direction}_trades_{environment}"}}[10m])'
         value = requests.post(f'{url}?query={query}',
                               timeout=10).json()['data']['result'][0]['value'][-1]

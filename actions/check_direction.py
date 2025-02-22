@@ -19,7 +19,7 @@ class CheckDirection(Action):
 
     def run(self, direction):
         print("Try to determine direction")
-        url = "http://jenkins:9090/api/v1/query"
+        url = "http://watchtower:9090/api/v1/query"
         query = 'sum({__name__ =~ "tv_all_value_.*"})'
         value = requests.post(f'{url}?query={query}',
                               timeout=10).json()['data']['result'][0]['value'][-1]
