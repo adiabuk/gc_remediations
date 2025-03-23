@@ -24,7 +24,7 @@ criteria:
     pattern: HARD
     type: eq
   trigger.service:
-    pattern: ".*_.*_rate"
+    pattern: ".*_rate"
     type: regex
 action:
   ref: gc_remediations.remediate_rate
