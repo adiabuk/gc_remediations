@@ -18,7 +18,7 @@ class CheckDirection(Action):
         return 0 if result else 9
 
     def run(self, direction):
-        print("Try to determine direction")
+        print(f"Try to determine if {direction} is the correct direction")
         url = "http://watchtower:9090/api/v1/query"
         query = 'sum({__name__ =~ "tv_all_value_.*"})'
         value = requests.post(f'{url}?query={query}',
@@ -31,6 +31,6 @@ class CheckDirection(Action):
         if direction == 'neutral':
             result = float(value) == 0
 
-        print(f"result is {str(result)}")
+        print(f"result is {str(result)}, output value is {value}")
         return result
         #sys.exit(self.check_result(result))
